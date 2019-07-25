@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
     .get()
     .then(doc => {
       if (doc.exists) {
-        return res.status(400).json({ handle: 'This handle is already taken' });
+        return res.status(400).json({ handle: 'this handle is already taken' });
       } else {
         return firebase
           .auth()
@@ -61,7 +61,7 @@ exports.signup = (req, res) => {
     .catch(err => {
       console.error(err);
       if (err.code === 'auth/email-already-in-use') {
-        return res.status(400).json({ email: 'Email already use' });
+        return res.status(400).json({ errors: { email: 'Email already use' } });
       } else {
         res
           .status(500)

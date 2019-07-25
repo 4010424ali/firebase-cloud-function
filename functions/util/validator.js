@@ -60,3 +60,6 @@ exports.reduceUserDetails = data => {
   }
   return userDetails;
 };
+
+let ali = 'Ali     ';
+ali.trim();

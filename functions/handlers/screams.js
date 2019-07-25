@@ -11,7 +11,9 @@ exports.getAllScreams = (req, res) => {
           body: doc.data().body,
           userHandle: doc.data().userHandle,
           created_at: doc.data().created_at,
-          userImage: doc.data().userImage
+          userImage: doc.data().userImage,
+          likeCount: doc.data().likeCount,
+          commentCount: doc.data().commentCount
         });
       });
       return res.json(screams);
@@ -28,6 +30,9 @@ exports.getOneScream = (req, res) => {
     likeCount: 0,
     commentCount: 0
   };
+  if (req.body.body === '') {
+    return res.status(400).json({ error: 'Must not be empty' });
+  }
   db.collection('screams')
     .add(newScreams)
     .then(doc => {
