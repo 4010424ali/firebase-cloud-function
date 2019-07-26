@@ -7,7 +7,7 @@ exports.getAllScreams = (req, res) => {
       let screams = [];
       data.forEach(doc => {
         screams.push({
-          screamsId: doc.id,
+          screamId: doc.id,
           body: doc.data().body,
           userHandle: doc.data().userHandle,
           created_at: doc.data().created_at,
@@ -72,7 +72,7 @@ exports.getScream = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: err.code });
+      res.status(500).json({ error: err });
     });
 };
 
@@ -106,7 +106,7 @@ exports.commentsOnScream = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: err.code });
+      res.status(500).json({ error: err });
     });
 };
 
@@ -153,7 +153,7 @@ exports.likeScream = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      return res.status(500).json({ error: err.code });
+      return res.status(500).json({ error: err });
     });
 };
 exports.unlikeScream = (req, res) => {
@@ -196,7 +196,7 @@ exports.unlikeScream = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      return res.status(500).json({ error: err.code });
+      return res.status(500).json({ error: err });
     });
 };
 
