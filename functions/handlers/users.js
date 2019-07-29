@@ -173,7 +173,7 @@ exports.getAuthecateUser = (req, res) => {
       });
       return db
         .collection('notifications')
-        .where('sender', '==', req.user.handle)
+        .where('recipient', '==', req.user.handle)
         .orderBy('created_at', 'desc')
         .limit(10)
         .get();
@@ -195,7 +195,7 @@ exports.getAuthecateUser = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      return res.status(500).json({ error: err.code });
+      return res.status(500).json({ error: err });
     });
 };
 
